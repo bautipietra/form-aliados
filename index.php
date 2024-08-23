@@ -9,9 +9,16 @@
   <meta name="robots" content="noindex">
   <!-- Survey library -->
   <script src="https://unpkg.com/jquery/dist/jquery.min.js"></script>
-  <script src="https://unpkg.com/survey-jquery@1.11.11/survey.jquery.min.js"></script>
-  <script src="https://unpkg.com/survey-jquery@1.11.11/themes/index.min.js"></script>
-  <link rel="stylesheet" href="https://unpkg.com/survey-jquery@1.11.11/defaultV2.min.css" />
+  <script src="https://unpkg.com/survey-core@1.11.12/survey.core.min.js"></script>
+  <script src="https://unpkg.com/survey-core@1.11.12/survey.i18n.min.js"></script>
+  <script src="https://unpkg.com/survey-core@1.11.12/themes/index.min.js"></script>
+  <script src="https://unpkg.com/survey-js-ui@1.11.12/survey-js-ui.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/survey-core@1.11.12/defaultV2.min.css" />
+  <!-- Bootstrap tour -->
+  <link href="./bootstrap-tour-standalone.min.css" rel="stylesheet">
+  <script src="./bootstrap-tour-standalone.min.js"></script>
+  <!-- Bootstrap icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <!-- Slider library -->
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
   <style scoped>
@@ -54,7 +61,7 @@
       /* Plantilla detalle compañía */
 
       .d-none-company {
-        display: none !important;
+        transform: translateX(-500%);
       }
 
       #company-mode-container {
@@ -148,7 +155,6 @@
 
         .container {
           background-color: white;
-          min-height: 150px;
           border-radius: var(--border-radius);
           padding: 32px;
         }
@@ -469,7 +475,7 @@
 <body id="custom-body">
   <!-- select -->
   <select name="mode" id="mode">
-    <option value="1">Formulario</option>
+    <option value="1" default>Formulario</option>
     <option value="2">Vista Previa</option>
   </select>
   <!-- form -->
@@ -481,117 +487,22 @@
       <!-- Hero -->
       <div>
         <!-- Banner -->
-        <img class="banner" src="" alt="">
+        <img id="banner" class="banner" style="background-color: #ff6433;" src="https://academia.commercesociety.com/wp-content/uploads/2024/02/Commerce-Society_Mesa-de-trabajo-1-Copia.webp" alt="">
         <!-- Logo and Company intro -->
         <div class="company-intro container">
           <div class="company-info">
-            <img class="logo" src="" alt="">
+            <img id="logo" class="logo" src="https://academia.commercesociety.com/wp-content/uploads/2024/03/Commerce-Society-Simbolo.png" alt="">
             <div>
-              <h1></h1>
-              <span></span>
+              <h1 id="nombre">Empresa</h1>
+              <span id="rubro">Rubro de la empresa</span>
               <!-- Contact Links -->
               <ul class="contact-list" id="contact-mobile">
-                <li>
-                  <a href="" target="_blank">
-                    <i class="bi bi-globe"></i>
-                    Web
-                  </a>
-                </li>
-                <li>
-                  <a href="mailto:">
-                    <i class="bi bi-envelope"></i>
 
-                  </a>
-                </li>
-                <li>
-                  <a href="">
-                    <i class="bi bi-telephone"></i>
-                    echo htmlspecialchars($companyPhone);
-                  </a>
-                </li>
-                <li>
-                  <a href="" target="_blank">
-                    <i class="bi bi-linkedin"></i>
-                    Linkedin
-                  </a>
-                </li>
-                <li>
-                  <a href="" target="_blank">
-                    <i class="bi bi-mic-fill"></i>
-                    Podcast
-                  </a>
-                </li>
-                <li>
-                  <a href="" target="_blank">
-                    <i class="bi bi-facebook"></i>
-                    Facebook
-                  </a>
-                </li>
-                <li>
-                  <a href="" target="_blank">
-                    <i class="bi bi-twitter-x"></i>
-                    Twitter
-                  </a>
-                </li>
-                <li>
-                  <a href="" target="_blank">
-                    <i class="bi bi-instagram"></i>
-                    Instagram
-                  </a>
-                </li>
               </ul>
             </div>
           </div>
           <!-- Contact Links -->
           <ul class="contact-list" id="contact-desktop">
-            <li>
-              <a href="" target="_blank">
-                <i class="bi bi-globe"></i>
-                Web
-              </a>
-            </li>
-            <li>
-              <a href="mailto:">
-                <i class="bi bi-envelope"></i>
-
-              </a>
-            </li>
-            <li>
-              <a href="">
-                <i class="bi bi-telephone"></i>
-                echo htmlspecialchars($companyPhone);
-              </a>
-            </li>
-            <li>
-              <a href="" target="_blank">
-                <i class="bi bi-linkedin"></i>
-                Linkedin
-              </a>
-            </li>
-            <li>
-              <a href="" target="_blank">
-                <i class="bi bi-mic-fill"></i>
-                Podcast
-              </a>
-            </li>
-            <li>
-              <a href="" target="_blank">
-                <i class="bi bi-facebook"></i>
-                Facebook
-              </a>
-            </li>
-            <li>
-              <a href="" target="_blank">
-                <i class="bi bi-twitter-x"></i>
-                Twitter
-              </a>
-            </li>
-            <li>
-              <a href="" target="_blank">
-                <i class="bi bi-instagram"></i>
-                Instagram
-              </a>
-            </li>
           </ul>
         </div>
       </div>
@@ -602,8 +513,7 @@
             <h2>Índice</h2>
             <ul>
               <li><a href="#destacado">Contenido destacado</a></li>
-              <li><a href="#sobre">Sobre</a></li>
-              <li><a href="#clases">Clases</a></li>
+              <li><a href="#sobre" id="sobreIndice">Sobre</a></li>
               <li><a href="#workshop">Workshop</a></li>
               <li><a href="#articulos">Artículos</a></li>
               <li><a href="#casos">Casos de éxito</a></li>
@@ -611,158 +521,10 @@
             </ul>
           </div>
         </div>
-        <div class="info-wrapper">
-          <!-- Gallery / Featured content -->
-          <div class="container" id="destacado">
-            <h2>Contenido destacado</h2>
-            <div class="gallery-container slider">
-              <a href="" target="_blank" class="gallery-item">
-                <img src="" class="gallery-image">
-              </a>
-            </div>
-          </div>
-          <!-- About -->
-          <div class="about-container container" id="sobre">
-            <h2></h2>
-            <p></p>
-          </div>
-          <!-- Clases -->
-          <div class="container" id="clases">
-            <h2>Clases y capacitaciones</h2>
-            <div class="slider">
-              <div class="clase-card">
-                <img src="./assets/clase.webp" alt="" srcset="">
-                <div>
-                  <h3>Nombre Curso</h3>
-                  <p>Categoria</p>
-                  <a href="">Acceder</a>
-                </div>
-              </div>
-              <div class="clase-card">
-                <img src="./assets/clase.webp" alt="" srcset="">
-                <div>
-                  <h3>Nombre Curso</h3>
-                  <p>Categoria</p>
-                  <a href="">Acceder</a>
-                </div>
-              </div>
-              <div class="clase-card">
-                <img src="./assets/clase.webp" alt="" srcset="">
-                <div>
-                  <h3>Nombre Curso</h3>
-                  <p>Categoria</p>
-                  <a href="">Acceder</a>
-                </div>
-              </div>
-              <div class="clase-card">
-                <img src="./assets/clase.webp" alt="" srcset="">
-                <div>
-                  <h3>Nombre Curso</h3>
-                  <p>Categoria</p>
-                  <a href="">Acceder</a>
-                </div>
-              </div>
-              <div class="clase-card">
-                <img src="./assets/clase.webp" alt="" srcset="">
-                <div>
-                  <h3>Nombre Curso</h3>
-                  <p>Categoria</p>
-                  <a href="">Acceder</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Workshop -->
-          <div class="container" id="workshop">
-            <h2>Visita nuestro último Workshop</h2>
-            <iframe width="100%" height="440" src="https://www.youtube-nocookie.com/embed/raFFOPu9uHA?si=ys2Q7qDS048PYkVl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-          </div>
-          <!-- Articulos -->
-          <div class="container" id="articulos">
-            <h2>Últimos articulos</h2>
-            <div class="slider">
-              <div class="clase-card">
-                <img src="./assets/art1.png" alt="" srcset="">
-                <div>
-                  <h3>Nombre Articulo</h3>
-                  <p>Marketing</p>
-                  <a href="">Visitar</a>
-                </div>
-              </div>
-              <div class="clase-card">
-                <img src="./assets/art2.png" alt="" srcset="">
-                <div>
-                  <h3>Nombre Articulo</h3>
-                  <p>Negocios</p>
-                  <a href="">Visitar</a>
-                </div>
-              </div>
-              <div class="clase-card">
-                <img src="./assets/art1.png" alt="" srcset="">
-                <div>
-                  <h3>Nombre Articulo</h3>
-                  <p>Categoria</p>
-                  <a href="">Visitar</a>
-                </div>
-              </div>
-              <div class="clase-card">
-                <img src="./assets/art2.png" alt="" srcset="">
-                <div>
-                  <h3>Nombre Articulo</h3>
-                  <p>Categoria</p>
-                  <a href="">Visitar</a>
-                </div>
-              </div>
-              <div class="clase-card">
-                <img src="./assets/art1.png" alt="" srcset="">
-                <div>
-                  <h3>Nombre Articulo</h3>
-                  <p>Categoria</p>
-                  <a href="">Visitar</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Casos de éxito -->
-          <div class="container" id="casos">
-            <h2>Casos de éxito</h2>
-            <div class="slider">
-              <a href="" target="_blank" class="exito-item">
-                <img src="" class="exito-image">
-              </a>
-            </div>
-          </div>
-          <!-- Mentoria -->
-          <div class="container" id="mentoria">
-            <h2>Solicita una mentoría gratuita</h2>
-            <p>Aprovecha esta llamada sin costo para recibir asesoría personalizada y descubrir cómo podemos ayudarte a alcanzar tus metas. ¡No te lo pierdas y agenda tu sesión hoy mismo!</p>
-            <a href="">Agendar mentoría</a>
-            <!-- Final del widget de enlace de Calendly -->
-          </div>
+        <div class="info-wrapper" id="info-wrapper">
         </div>
       </div>
     </main>
-    <!-- Slider -->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-
-    <script>
-      $('.slider').slick({
-        infinite: false,
-        speed: 300,
-        slidesToShow: 2,
-        slidesToScroll: 2,
-        arrows: false,
-        responsive: [{
-          breakpoint: 600,
-          settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1
-          }
-        }]
-      });
-    </script>
   </div>
   <script>
     /* Form theme */
@@ -870,55 +632,47 @@
       "pages": [{
           "name": "business-info",
           "title": "Ingrese la información de su empresa\n",
-          "description": {
-            "default": "\n",
-            "es": ".\n"
-          },
+          "description": "\n",
           "elements": [{
               "type": "text",
-              "name": "question1",
+              "name": "nombre",
               "title": "Nombre de la empresa",
               "isRequired": true
             },
             {
               "type": "text",
-              "name": "question4",
+              "name": "rubro",
               "title": "Rubro",
               "isRequired": true,
               "placeholder": "Ej. Plataforma de educación"
             },
             {
               "type": "comment",
-              "name": "question7",
+              "name": "descripcion",
               "title": "Descripción",
               "isRequired": true,
               "maxLength": 1000
             },
             {
               "type": "file",
-              "name": "question5",
+              "name": "logo",
               "title": "Logo",
-              "isRequired": true,
-              "maxSize": 153600
+              "isRequired": true
             },
             {
               "type": "file",
-              "name": "question6",
+              "name": "banner",
               "title": "Banner",
-              "isRequired": true,
-              "maxSize": 256000
+              "isRequired": true
             }
           ]
         },
         {
-          "name": "contact",
+          "name": "contact-container",
           "title": "Ingrese su información de contacto",
-          "description": {
-            "es": "."
-          },
           "elements": [{
             "type": "multipletext",
-            "name": "question3",
+            "name": "contact",
             "title": "Ingrese sus enlaces de contacto\n",
             "items": [{
                 "name": "phone",
@@ -972,22 +726,28 @@
           }]
         },
         {
-          "name": "articles",
+          "name": "articles-container",
           "title": "Agregue publicaciones y articulos",
           "elements": [{
             "type": "paneldynamic",
-            "name": "question2",
+            "name": "articles",
             "title": "Agregue sus articulos/posts/blog con las respectivas miniaturas, titulos y categorias",
             "templateElements": [{
                 "type": "file",
                 "name": "thumbnail",
+                "title": "Miniatura del artículo (peso máximo de la imagen: 250kb)",
+                "isRequired": true,
+                "maxSize": 255997,
+                "filePlaceholder": "Arrastre y suelte un archivo aquí o haga clic en el botón de abajo para seleccionar un archivo para cargar."
+              },
+              {
+                "type": "text",
+                "name": "urlArticle",
                 "title": {
-                  "default": "Miniatura del artículo (peso máximo de la imagen: 250kb)",
-                  "es": "Miniatura del artículo (peso máximo de la imagen: 150kb)"
+                  "es": "Enlace del articulo"
                 },
                 "isRequired": true,
-                "maxSize": 153600,
-                "filePlaceholder": "Arrastre y suelte un archivo aquí o haga clic en el botón de abajo para seleccionar un archivo para cargar."
+                "inputType": "url"
               },
               {
                 "type": "text",
@@ -1001,40 +761,49 @@
                 "title": "Categoría del artículo",
                 "isRequired": true,
                 "placeholder": "Ej. Marketing",
-                "dataList": [
-                  "Marketing",
-                  "Tecnología",
-                  "Ventas"
-                ]
+                "dataList": {
+                  "pos": {
+                    "start": 4099,
+                    "end": 4247
+                  },
+                  "es": [
+                    "Marketing",
+                    "Tecnología",
+                    "Ventas"
+                  ]
+                }
               }
             ],
             "maxPanelCount": 5
           }]
         },
         {
-          "name": "success",
+          "name": "exitos-container",
           "title": {
             "default": "Agregue publicaciones y articulos",
-            "es": "Casos de éxito"
+            "es": "Casos de éxito\n"
           },
           "elements": [{
             "type": "paneldynamic",
-            "name": "question10",
-            "title": "Agregue sus articulos/posts/blog con las respectivas miniaturas, titulos y categorias",
+            "name": "exitos",
+            "title": {
+              "default": "Agregue sus articulos/posts/blog con las respectivas miniaturas, titulos y categorias",
+              "es": "Agregue sus casos de éxito, con su respectiva imagen y enlace."
+            },
             "templateElements": [{
                 "type": "file",
-                "name": "question11",
+                "name": "thumbnailExitos",
                 "title": {
                   "default": "Miniatura del artículo (peso máximo de la imagen: 250kb)",
-                  "es": "Miniatura del caso de éxito (peso máximo de la imagen: 150kb)"
+                  "es": "Miniatura del caso de éxito (peso máximo de la imagen: 250kb)"
                 },
                 "isRequired": true,
-                "maxSize": 153600,
+                "maxSize": 255997,
                 "filePlaceholder": "Arrastre y suelte un archivo aquí o haga clic en el botón de abajo para seleccionar un archivo para cargar."
               },
               {
                 "type": "text",
-                "name": "question12",
+                "name": "urlExitos",
                 "title": {
                   "default": "Título del artículo",
                   "es": "Enlace al caso de éxito"
@@ -1050,58 +819,14 @@
           }]
         },
         {
-          "name": "content",
-          "title": {
-            "default": "Agregue publicaciones y articulos",
-            "es": "Contenido destacado"
-          },
-          "elements": [{
-            "type": "paneldynamic",
-            "name": "question13",
-            "title": {
-              "default": "Agregue sus articulos/posts/blog con las respectivas miniaturas, titulos y categorias",
-              "es": "En esta sección podrás agregar contenido personalizado como servicios, productos, descuentos, anuncios, etc."
-            },
-            "templateElements": [{
-                "type": "file",
-                "name": "question14",
-                "title": {
-                  "default": "Miniatura del artículo (peso máximo de la imagen: 250kb)",
-                  "es": "Miniatura del contenido (peso máximo de la imagen: 150kb)"
-                },
-                "isRequired": true,
-                "maxSize": 153600,
-                "filePlaceholder": "Arrastre y suelte un archivo aquí o haga clic en el botón de abajo para seleccionar un archivo para cargar."
-              },
-              {
-                "type": "text",
-                "name": "question15",
-                "title": {
-                  "default": "Título del artículo",
-                  "es": "Enlace al contenido"
-                },
-                "isRequired": true,
-                "inputType": "url",
-                "placeholder": {
-                  "es": "https://www.example.com"
-                }
-              }
-            ],
-            "maxPanelCount": 5
-          }]
-        },
-        {
-          "name": "mentoring",
+          "name": "mentorias",
           "title": "Mentorías",
           "description": "Si te gustaría ofrecer mentorías/reuniones ingrese su enlace de invitación de calendly",
           "elements": [{
             "type": "text",
-            "name": "question8",
+            "name": "calendly",
             "title": "Calendly",
-            "inputType": "url",
-            "placeholder": {
-              "es": "https://calendly.com/username/event-name"
-            }
+            "inputType": "url"
           }]
         },
         {
@@ -1109,9 +834,12 @@
           "title": {
             "es": "Workshop/Webinar"
           },
+          "description": {
+            "es": "\n"
+          },
           "elements": [{
             "type": "text",
-            "name": "question9",
+            "name": "webinar",
             "title": {
               "es": "Workshop/Webinar"
             },
@@ -1120,6 +848,34 @@
               "es": "https://www.youtube.com/watch?v=exampleID"
             }
           }]
+        },
+        {
+          "name": "contenido-container",
+          "title": "Agregue publicaciones y articulos",
+          "elements": [{
+            "type": "paneldynamic",
+            "name": "contenido",
+            "title": "Agregue sus articulos/posts/blog con las respectivas miniaturas, titulos y categorias",
+            "templateElements": [{
+                "type": "file",
+                "name": "contenidoThumbnail",
+                "title": "Miniatura del artículo (peso máximo de la imagen: 250kb)",
+                "isRequired": true,
+                "maxSize": 255997,
+                "filePlaceholder": "Arrastre y suelte un archivo aquí o haga clic en el botón de abajo para seleccionar un archivo para cargar."
+              },
+              {
+                "type": "text",
+                "name": "contenidoUrl",
+                "title": {
+                  "es": "Enlace del articulo"
+                },
+                "isRequired": true,
+                "inputType": "url"
+              }
+            ],
+            "maxPanelCount": 5
+          }]
         }
       ],
       "showPageNumbers": true
@@ -1127,26 +883,252 @@
     /* Form exec */
     const survey = new Survey.Model(json);
     survey.applyTheme(themeJson);
-    survey.onValueChanged.add(function(sender, options) {
-      // Consologuear todos los datos de la encuesta
-      console.log(sender.data);
-    });
-
     survey.onComplete.add((sender, options) => {
       console.log(sender.data);
-      //console.log(JSON.stringify(sender.data, null, 3));
+    });
+    let contenidoHTML = '';
+    let descripcionHTML = '';
+    let webinarHTML = '';
+    let articlesHTML = '';
+    let exitosHTML = '';
+    let calendlyHTML = '';
+    survey.onValueChanged.add(function(sender, options) {
+      console.log("Pregunta cambiada:", options.name);
+      console.log("Nuevo valor:", options.value);
+
+      const infoWrapper = document.getElementById('info-wrapper');
+      infoWrapper.innerHTML = '';
+      if (options.name == "banner") {
+        $('#banner').attr("src", options.value[0].content);
+      } else if (options.name == "logo") {
+        $('#logo').attr("src", options.value[0].content);
+      } else if (options.name == "nombre") {
+        $('#nombre').text(options.value);
+        document.getElementById('sobreIndice').innerHTML = 'Sobre ' + options.value;
+      } else if (options.name == "rubro") {
+        $('#rubro').text(options.value);
+      } else if (options.name == "contact") {
+        let contactHtml = '';
+
+        if (options.value.web) {
+          contactHtml += `
+            <li>
+                <a href="${options.value.web}" target="_blank">
+                    <i class="bi bi-globe"></i>
+                    Web
+                </a>
+            </li>`;
+        }
+        if (options.value.mail) {
+          contactHtml += `
+            <li>
+                <a href="mailto:${options.value.mail}">
+                    <i class="bi bi-envelope"></i>
+                    Mail
+                </a>
+            </li>`;
+        }
+        if (options.value.phone) {
+          contactHtml += `
+            <li>
+                <a href="tel:${options.value.phone}">
+                    <i class="bi bi-telephone"></i>
+                    Teléfono
+                </a>
+            </li>`;
+        }
+        if (options.value.linkedin) {
+          contactHtml += `
+            <li>
+                <a href="${options.value.linkedin}" target="_blank">
+                    <i class="bi bi-linkedin"></i>
+                    Linkedin
+                </a>
+            </li>`;
+        }
+        if (options.value.podcast) {
+          contactHtml += `
+            <li>
+                <a href="${options.value.podcast}" target="_blank">
+                    <i class="bi bi-mic-fill"></i>
+                    Podcast
+                </a>
+            </li>`;
+        }
+        if (options.value.fb) {
+          contactHtml += `
+            <li>
+                <a href="${options.value.fb}" target="_blank">
+                    <i class="bi bi-facebook"></i>
+                    Facebook
+                </a>
+            </li>`;
+        }
+        if (options.value.tw) {
+          contactHtml += `
+            <li>
+                <a href="${options.value.tw}" target="_blank">
+                    <i class="bi bi-twitter-x"></i>
+                    Twitter
+                </a>
+            </li>`;
+        }
+        if (options.value.ig) {
+          contactHtml += `
+            <li>
+                <a href="${options.value.ig}" target="_blank">
+                    <i class="bi bi-instagram"></i>
+                    Instagram
+                </a>
+            </li>`;
+        }
+        // Asignar el HTML generado a ambos elementos
+        document.getElementById('contact-desktop').innerHTML = contactHtml;
+        document.getElementById('contact-mobile').innerHTML = contactHtml;
+      } else if (options.name == "contenido") {
+        contenidoHTML = `
+            <div class="container" id="destacado">
+                <h2>Contenido destacado</h2>`;
+        for (let i = 0; i < options.value.length; i++) {
+          contenidoHTML += `
+                <div class="gallery-container slider">
+                    <a href="${options.value[i].url}" target="_blank" class="gallery-item">
+                        <img src="${options.value[i].contenidoThumbnail[0].content}" class="gallery-image">
+                    </a>
+                </div>`;
+        }
+        contenidoHTML += `</div>`;
+      } else if (options.name == "descripcion") {
+        descripcionHTML = `
+            <div class="about-container container" id="sobre">
+                <h2 id="about-title">Sobre ${sender?.valuesHash?.nombre || 'Empresa'}</h2>
+                <p id="about">${options.value}</p>
+            </div>`;
+      } else if (options.name == "webinar") {
+        webinarHTML = `
+            <div class="container" id="workshop">
+                <h2>Visita nuestro último Workshop</h2>
+                <iframe width="100%" height="440" src="${options.value}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>`;
+      } else if (options.name == "articles") {
+        articlesHTML = `
+            <div class="container" id="articulos">
+                <h2>Últimos articulos</h2>
+                <div class="slider">`;
+        for (let i = 0; i < options.value.length; i++) {
+          if (Object.keys(options.value[i]).length > 0) {
+            articlesHTML += `
+                <div class="clase-card">
+                    <img src="${options.value[i]?.thumbnail[0]?.content}" alt="" srcset="">
+                    <div>
+                        <h3>${options.value[i]?.title}</h3>
+                        <p>${options.value[i]?.category}</p>
+                        <a href="${options.value[i]?.urlArticle}" target="_blank">Visitar</a>
+                    </div>
+                </div>`;
+          }
+        }
+        articlesHTML += `</div></div>`;
+      } else if (options.name == "exitos") {
+        exitosHTML = `
+            <div class="container" id="casos">
+                <h2>Casos de éxito</h2>
+                <div class="slider">`;
+        for (let i = 0; i < options.value.length; i++) {
+          exitosHTML += `
+                <a href="${options.value[i].urlExitos}" target="_blank" class="exito-item">
+                    <img src="${options.value[i].thumbnailExitos[0].content}" class="exito-image">
+                </a>`;
+        }
+        exitosHTML += `</div></div>`;
+      } else if (options.name == "calendly") {
+        calendlyHTML = `
+            <div class="container" id="mentoria">
+                <h2>Solicita una mentoría gratuita</h2>
+                <p>Aprovecha esta llamada sin costo para recibir asesoría personalizada y descubrir cómo podemos ayudarte a alcanzar tus metas. ¡No te lo pierdas y agenda tu sesión hoy mismo!</p>
+                <a href="${options.value}" target="_blank">Agendar mentoría</a>
+            </div>`;
+      }
+
+      // Finalmente, asignar todo el HTML generado a la vista previa
+      infoWrapper.innerHTML = contenidoHTML + descripcionHTML + webinarHTML + articlesHTML + exitosHTML + calendlyHTML;
+
+      // Agregar slider a los nuevos componentes.
+      function initializeSlick() {
+        var sliders = document.querySelectorAll('.slider');
+        sliders.forEach(function(slider) {
+          if (typeof $(slider).slick === 'function') {
+            $(slider).on('reInit', function(event, slick) {
+              // Aquí puedes realizar cualquier acción adicional después de que slick se haya re-inicializado
+              console.log('Slider re-initialized');
+            });
+
+            $(slider).slick({
+              infinite: false,
+              speed: 300,
+              slidesToShow: 2,
+              slidesToScroll: 2,
+              arrows: false,
+              responsive: [{
+                breakpoint: 600,
+                settings: {
+                  slidesToShow: 1,
+                  slidesToScroll: 1
+                }
+              }]
+            });
+
+            // Recalcula el tamaño después de inicializar slick
+            $(slider).slick('setPosition');
+          } else {
+            console.error('Slick is not available.');
+          }
+        });
+      }
+
+      initializeSlick();
+
+    });
+
+
+    $("#surveyElement").Survey({
+      model: survey
     });
 
     /* Mode handler */
     $("#mode").on("change", function() {
       const mode = $(this).val();
       if (mode == 1) {
+        $("#surveyElement").removeClass("d-none-company");
         $("#company-mode-container").addClass("d-none-company");
       } else if (mode == 2) {
         $("#company-mode-container").removeClass("d-none-company");
+        $("#surveyElement").addClass("d-none-company");
       }
     });
+
+    /* Bootstrap tour */
+    var tour = new Tour({
+      backdrop: true,
+      storage: true,
+      steps: [{
+        element: "#sp_100",
+        placement: "top",
+        title: "Bienvenido al formulario de la red de aliados.",
+        content: "Aquí podrás completar la información de tu compañía para que nuestros clientes te conozcan."
+      }, {
+        element: "#mode",
+        title: "Dropdown",
+        content: "Puedes cambiar entre la vista del formulario y la previsualización de tu página para ver el resultado final."
+      }]
+    });
+    tour.init();
+    tour.start();
   </script>
+  <!-- Slider -->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 </body>
 
 </html>
