@@ -15,8 +15,8 @@
   <script src="https://unpkg.com/survey-js-ui@1.11.12/survey-js-ui.js"></script>
   <link rel="stylesheet" href="https://unpkg.com/survey-core@1.11.12/defaultV2.min.css" />
   <!-- Bootstrap tour -->
-  <link href="./bootstrap-tour-standalone.min.css" rel="stylesheet">
-  <script src="./bootstrap-tour-standalone.min.js"></script>
+  <script src=" https://cdn.jsdelivr.net/npm/bootstrap-tour@0.12.0/build/js/bootstrap-tour.min.js "></script>
+  <link href=" https://cdn.jsdelivr.net/npm/bootstrap-tour@0.12.0/build/css/bootstrap-tour.min.css " rel="stylesheet">
   <!-- Bootstrap icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <!-- Slider library -->
@@ -362,7 +362,8 @@
         }
 
         .company-wrapper .info-wrapper .about-container {
-          display: grid;
+          display: flex;
+          flex-direction: column;
         }
 
         .company-wrapper .info-wrapper .gallery-container .gallery-item {
